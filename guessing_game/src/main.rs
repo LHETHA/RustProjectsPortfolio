@@ -21,7 +21,10 @@ fn main() {
             .read_line(&mut guess) // &mut --> mutable (mut) reference (&)
             .expect("Failed to read line"); // similar to expect statement in Python
 
-        let guess: u32 = guess.trim().parse().expect("Please type a number.");
+        let guess: u32 = match guess.trim().parse() { // switch from expect to match case statement
+            Ok(num) => num,
+            Err(_) => continue, // underscore --> catch-all value
+        };
 
         println!("You guessed: {guess}"); // {} --> placeholder containing a variable
 
