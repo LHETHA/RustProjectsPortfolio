@@ -11,22 +11,27 @@ fn main() {
     // DEBUG
     println!("The secret number is: {secret_number}");
 
-    println!("Please input your guess.");
+    loop {
+        println!("Please input your guess.");
 
-    let mut guess = String::new();  // String is growable, UTF-8 text
-                                            // :: means that new is an associated function of String type
+        let mut guess = String::new();  // String is growable, UTF-8 text
+                                                // :: means that new is an associated function of String type
 
-    io::stdin()
-        .read_line(&mut guess) // &mut --> mutable (mut) reference (&)
-        .expect("Failed to read line"); // similar to expect statement in Python
+        io::stdin()
+            .read_line(&mut guess) // &mut --> mutable (mut) reference (&)
+            .expect("Failed to read line"); // similar to expect statement in Python
 
-    let guess: u32 = guess.trim().parse().expect("Please type a number.");
+        let guess: u32 = guess.trim().parse().expect("Please type a number.");
 
-    println!("You guessed: {guess}"); // {} --> placeholder containing a variable
+        println!("You guessed: {guess}"); // {} --> placeholder containing a variable
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too large!"),
-        Ordering::Equal => println!("Y O U   W I N!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too large!"),
+            Ordering::Equal => {
+                println!("Y O U   W I N!");
+                break;
+            }
+        }
     }
 }
