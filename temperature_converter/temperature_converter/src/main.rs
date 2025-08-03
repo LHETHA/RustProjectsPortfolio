@@ -1,8 +1,36 @@
 use std::io;
 
 fn main() {
-    fahrenheit_to_celsius();
-    celsius_to_fahrenheit();
+    println!("Please select your conversion method!");
+    println!("[0] for Fahrenheit --> Celsius");
+    println!("[1] for Celsius --> Fahrenheit");
+
+    loop {
+        let mut user_selection: String = String::new();
+
+        io::stdin()
+            .read_line(&mut user_selection)
+            .expect("Error: Cannot read line.");
+
+        println!("Selected conversion: {user_selection}");
+
+        let user_selection: i64 = user_selection.trim().parse().expect("Error. Could not read value.");
+
+        if user_selection == 0 {
+            fahrenheit_to_celsius();
+            break;
+        }
+        
+        else if user_selection == 1 {
+            celsius_to_fahrenheit();
+            break;
+        }
+
+        else {
+            println!("Wrong input!");
+            break;
+        }
+    }
 }
 
 // Conversion Fahrenheit to Celsius:
