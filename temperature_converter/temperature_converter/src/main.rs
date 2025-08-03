@@ -11,11 +11,11 @@ fn fahrenheit_to_celsius() {
     println!("Please enter your Temperature in Fahrenheit: ");
     let mut user_input: String = String::new();
 
-    println!("Converting!");
-
     io::stdin()
         .read_line(&mut user_input)
         .expect("Error: Failed to read line.");
+
+    println!("Converting!");
     
     let user_input: i64 = user_input.trim().parse().expect("Incorrect value.");
 
@@ -28,11 +28,11 @@ fn celsius_to_fahrenheit() {
     println!("Please enter your temperature in Celsius: ");
     let mut user_input: String = String::new();
 
-    println!("Converting!");
-
     io::stdin()
         .read_line(&mut user_input)
         .expect("Error. Could not read line.");
+
+    println!("Converting!");
     
     let user_input: i64 = user_input.trim().parse().expect("Error. Cannot read value.");
 
